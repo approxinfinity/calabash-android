@@ -8,8 +8,8 @@ public class GetMapZoom implements Action {
 
 	@Override
     public Result execute(String... args) {
-    	int zoomLevel = InstrumentationBackend.solo.getMapZoom();
-        return new Result(true, Integer.toString(zoomLevel));
+    	float zoomLevel = InstrumentationBackend.solo.getMapZoom();
+        return new Result(true, Float.toString(zoomLevel));
     }
 
     @Override

@@ -151,21 +151,28 @@ public class CalabashChromeClient extends WebChromeClient {
 	}
 
     public void evaluateCalabashScript(String script) {
-        webView.evaluateJavascript(script, new ValueCallback<String>() {
-            public void onReceiveValue(String rawResponseJSON) {
-                String jsonResponse = null;
+        if (Build.VERSION.SDK_INT < 19)
+        {
+            throw new RuntimeException("evaluateCalabashScript method requires Android 19 or later");
+        }
+        else {
+                        webView.evaluateJavascript(script, new ValueCallback<String>() {
+                            public void onReceiveValue(String rawResponseJSON) {
+                                String jsonResponse = null;
 
-                try {
-                    jsonResponse = new ObjectMapper().readValue(
-                            rawResponseJSON, new TypeReference<String>() {
-                    });
-                } catch (IOException e) {
-                    throw new RuntimeException("Incorrect JSON format returned from javascript: " + rawResponseJSON, e);
+                                try {
+                                    jsonResponse = new ObjectMapper().readValue(
+                                            rawResponseJSON, new TypeReference<String>() {
+                                            }
+                                    );
+                                } catch (IOException e) {
+                        throw new RuntimeException("Incorrect JSON format returned from javascript: " + rawResponseJSON, e);
+                    }
+
+                    scriptFuture.setResult(jsonResponse);
                 }
-
-                scriptFuture.setResult(jsonResponse);
-            }
-        });
+            });
+        }
     }
 
     @SuppressWarnings("rawtypes")

@@ -67,6 +67,7 @@
       <copy todir="${staging.dir}/libs">
         <fileset erroronmissingdir="false" dir="${env.ANDROID_HOME}/add-ons/addon-google_apis-google_inc_-${android.api.level}/libs"/>
         <fileset erroronmissingdir="false" dir="${env.ANDROID_HOME}/add-ons/addon-google_apis-google-${android.api.level}/libs"/>
+		<fileset erroronmissingdir="false" dir="${env.ANDROID_HOME}/extras/google/google_play_services/libproject/google-play-services_lib/libs"/>
       </copy>
       <copy todir="${staging.dir}/assets">
         <fileset dir="${calabashjs.dir}"/>

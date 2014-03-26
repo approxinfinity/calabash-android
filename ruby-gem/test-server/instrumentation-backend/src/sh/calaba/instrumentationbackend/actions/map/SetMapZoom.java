@@ -17,13 +17,14 @@ public class SetMapZoom implements Action {
     		return new Result( InstrumentationBackend.solo.zoomOutOnMap() );
     	}
     	
-    	int zoomLevel = Integer.parseInt(args[0]);
-        int newZoom = InstrumentationBackend.solo.setMapZoom( zoomLevel );
-        
-        if( newZoom == zoomLevel ) {
+    	int requestedZoomLevel = Integer.parseInt(args[0]);
+        InstrumentationBackend.solo.setMapZoom( requestedZoomLevel );
+        float updatedZoomLevel = InstrumentationBackend.solo.getMapZoom();
+
+        if( updatedZoomLevel == requestedZoomLevel ) {
         	return Result.successResult();
         } else {
-        	return new Result(false, "Requested zoom level: " + zoomLevel + " but current zoom level is " + newZoom);
+        	return new Result(false, "Requested zoom level: " + requestedZoomLevel + " but current zoom level is " + updatedZoomLevel);
         }
     }
 

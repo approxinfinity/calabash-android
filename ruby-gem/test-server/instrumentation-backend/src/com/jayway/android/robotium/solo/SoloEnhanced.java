@@ -30,42 +30,40 @@ public class SoloEnhanced extends Solo {
 		mapViewUtils.panTo(lat, lon);
 	}
 
-	public boolean zoomInOnMap() {
-		return mapViewUtils.zoomIn();
+	public boolean zoomInOnMap() {	return	mapViewUtils.zoomIn();	}
+
+	public boolean zoomOutOnMap() { return mapViewUtils.zoomOut(); }
+
+	public boolean setMapZoom( float zoomLevel ) {
+
+
+       return mapViewUtils.setZoom(zoomLevel);
 	}
 
-	public boolean zoomOutOnMap() {
-		return mapViewUtils.zoomOut();
-	}
-
-	public int setMapZoom( int zoomLevel ) {
-		return mapViewUtils.setZoom(zoomLevel);
-	}
-
-	public int getMapZoom() {
+	public float getMapZoom() {
 		return mapViewUtils.getZoom();
 	}
 
-	public List<String> getMapMarkerItems() {
-		return mapViewUtils.getMarkerItems();
-	}
+//	public List<String> getMapMarkerItems() {
+//		return mapViewUtils.getMarkerItems();
+//	}
 
-	public String getMapMarkerItem( String title ) {
-		return mapViewUtils.getMarkerItem( title );
-	}
-
-	/**
-	 * @param title
-	 * @param timeout in ms
-	 * @return
-	 */
-	public boolean tapMapMarkerItem( String title, long timeout ) {
-		return mapViewUtils.tapMarkerItem( title, timeout );
-	}
-
-	public boolean tapMapAwayFromMarkers( int step ) {
-		return mapViewUtils.tapAwayFromMarkerItems( step );
-	}
+//	public String getMapMarkerItem( String title ) {
+//		return mapViewUtils.getMarkerItem( title );
+//	}
+//
+//	/**
+//	 * @param title
+//	 * @param timeout in ms
+//	 * @return
+//	 */
+//	public boolean tapMapMarkerItem( String title, long timeout ) {
+//		return mapViewUtils.tapMarkerItem( title, timeout );
+//	}
+//
+//	public boolean tapMapAwayFromMarkers( int step ) {
+//		return mapViewUtils.tapAwayFromMarkerItems( step );
+//	}
 
 	/**
 	 * @return [top, right, bottom, left] in decimal degrees

@@ -5,10 +5,10 @@ import sh.calaba.instrumentationbackend.Result;
 import sh.calaba.instrumentationbackend.actions.Action;
 
 /**
- * Returns latitude, longitude (in decimal degrees) in the "bonusInformation"
- * 
- * @author Nicholas Albion
- */
+* Returns latitude, longitude (in decimal degrees) in the "bonusInformation"
+*
+* @author Nicholas Albion
+*/
 public class GetMapCenter implements Action {
 
 	@Override
