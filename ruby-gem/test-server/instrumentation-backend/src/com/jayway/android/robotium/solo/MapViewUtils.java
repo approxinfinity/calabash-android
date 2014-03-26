@@ -59,13 +59,13 @@ public class MapViewUtils {
 	 */
 	public void setCenter( double lat, double lon ) {
 		MapView mapView = getMapView();
-        mapView.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat * 1E6, lon * 1E6), 14.0f));
+        mapView.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lon), 14.0f));
 	}
 	
 	public double[] getMapCenter() {
 		MapView mapView = getMapView();
 		LatLng center = mapView.getMap().getCameraPosition().target;
-		return new double[] { center.latitude / 1E6, center.longitude / 1E6 };
+		return new double[] { center.latitude, center.longitude};
 	}
 	
 	/**
@@ -74,7 +74,8 @@ public class MapViewUtils {
 	 */
 	public void panTo( double lat, double lon ) {
 		MapView mapView = getMapView();
-		mapView.getMap().animateCamera(CameraUpdateFactory.newLatLng(new LatLng((lat * 1E6), (lon * 1E6))));
+		mapView.getMap().animateCamera(CameraUpdateFactory.newLatLng(new LatLng((lat), (lon))));
+        //mapView.getMap().animateCamera(CameraUpdateFactory.newLatLng(new LatLng((lat * 1E6), (lon * 1E6))));
 	}
 	
 	public float getZoom() {
@@ -89,7 +90,7 @@ public class MapViewUtils {
 		mapView.getMap().animateCamera(CameraUpdateFactory.zoomTo(zoomLevel));
         //return mapView.getController().setZoom( zoomLevel );
         float updatedZoom = getZoom();
-        return updatedZoom != currentZoom;
+        return updatedZoom == currentZoom;
 	}
 		
 	public boolean zoomIn() {

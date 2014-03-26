@@ -9,10 +9,6 @@
     <application android:label="CalabashTestServer" android:debuggable="true">
         <uses-library android:name="android.test.runner" />
         <uses-library android:name="com.google.android.maps" android:required="false" />
-        <meta-data android:name="com.google.android.gms.version"
-                   android:value="4132500" />
-
-     
     </application>
 
     <instrumentation

@@ -7,17 +7,19 @@ When /^I pan the map to (-?\d+\.\d+), (-?\d+\.\d+)$/ do | lat, lon |
   performAction('wait', 1)
 end
 
-When /^(?:I )?set the map zoom level to (\d+)$/ do | zoom |
+
+Then(/^I set the map zoom level to (\d+)$/) do |zoom|
   performAction('set_map_zoom', zoom)
   sleep(0.2)
 end
 
-When /^(?:I )?zoom (in|out) on the map$/ do | zoom |
+When /^I zoom (in|out) on the map$/ do | zoom |
   performAction('set_map_zoom', zoom)
   sleep(0.2)
 end
 
-Then /^the map zoom level should be (\d+)$/ do | zoom |
+
+Then(/^the map zoom level should be (\d+)$/) do |zoom|
   result = performAction('get_map_zoom')
   raise StandardError.new( "The map's zoom level should be #{zoom} but is #{result['message']}"  ) unless zoom.eql?( result['message'] )
 end
